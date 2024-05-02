@@ -21,18 +21,19 @@ end twoscomp_decimal;
 architecture Behavioral of twoscomp_decimal is
 begin
     process(i_binary)
-        variable binary_value: integer;
+        --variable binary_value: integer;
         variable decimal_value: integer;
     begin
-        binary_value := to_integer(unsigned(i_binary));
-        if binary_value < 0 then
-            o_negative <= "1111";
-            decimal_value := -binary_value;
-        else
-            o_negative <= "1110";
-            decimal_value := binary_value;
-        end if;
-        
+        --binary_value := to_integer(signed(i_binary));
+        --if binary_value < 0 then
+            --o_negative <= "1111";
+            --decimal_value := -binary_value;
+        --else
+            --o_negative <= "1110";
+            --decimal_value := binary_value;
+        --end if;
+        decimal_value := to_integer(unsigned(i_binary));
+        o_negative <= "1110";
         o_hundreds <= std_logic_vector(to_unsigned(decimal_value/100, 4));
         decimal_value := decimal_value mod 100;
         o_tens <= std_logic_vector(to_unsigned(decimal_value/10, 4));
