@@ -138,22 +138,22 @@ begin
             o_clk => w_clk2
             ); 
         
-     twoscomp_decimal_inst : twoscomp_decimal
-        port map (  i_binary    => s_mux,
-                    o_negative  => s_sign,
-                    o_hundreds  => s_hund,
-                    o_tens      => s_tens,
-                    o_ones      => s_ones
-                    );   
+     --twoscomp_decimal_inst : twoscomp_decimal
+       -- port map (  i_binary    => s_mux,
+                    --o_negative  => s_sign,
+                   -- o_hundreds  => s_hund,
+                   -- o_tens      => s_tens,
+                    --o_ones      => s_ones
+                   -- );   
     
     TDM4_inst : TDM4
         generic map ( k_WIDTH => k_IO_WIDTH ) 
         Port map ( i_clk    => w_clk2,
                i_reset      => btnU,
-               i_D3         => s_sign,
-               i_D2         => s_hund,
-               i_D1         => s_tens,
-               i_D0         => s_ones,
+               i_D3         => "0000",
+               i_D2         => "0000",
+               i_D1         => s_mux(7 downto 4),
+               i_D0         => s_mux(3 downto 0),
                o_data       => s_data,
                o_sel        => an
                );
