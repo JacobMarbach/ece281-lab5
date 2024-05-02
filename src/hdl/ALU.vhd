@@ -35,21 +35,32 @@ library ieee;
 
 
 entity ALU is
--- TODO
+    port(   i_A         :   in std_logic_vector(8 downto 0);
+            i_B         :   in std_logic_vector(8 downto 0);
+            i_op        :   in std_logic_vector(2 downto 0);
+            o_flags     :   out std_logic_vector(2 downto 0);
+            o_result    :   out std_logic_vector(7 downto 0)
+    );
 end ALU;
 
 architecture behavioral of ALU is 
   
 	-- declare components and signals
-
-  
+    signal sum : std_logic_vector(8 downto 0); 
+    signal o_Z, o_Cout, o_N : std_logic;
 begin
 	-- PORT MAPS ----------------------------------------
-
-	
-	
+    sum <= std_logic_vector(unsigned(i_A) + unsigned(i_B));
+	o_N <= '0';
+	o_Z <= '1' when sum = "000000000" else
+	       '0';
+	o_Cout <= sum(8);
 	-- CONCURRENT STATEMENTS ----------------------------
+	o_flags(2) <= o_N;
+	o_flags(1) <= o_Z;
+	o_flags(0) <= o_Cout;
 	
+	o_result <= sum(7 downto 0);
 	
 	
 end behavioral;
