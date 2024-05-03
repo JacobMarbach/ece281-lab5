@@ -96,8 +96,8 @@ begin
 			  i_D1 when f_sel = "01" else
 			  i_D0;
 			  
-	o_SEL  <=  "1111" when f_sel = "11" else
-			   "1111" when f_sel = "10" else
+	o_SEL  <=  "0111" when f_sel = "11" else
+			   "1011" when f_sel = "10" else
 			   "1101" when f_sel = "01" else
 			   "1110";
 		

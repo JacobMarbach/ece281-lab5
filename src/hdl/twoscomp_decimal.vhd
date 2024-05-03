@@ -21,7 +21,7 @@ end twoscomp_decimal;
 architecture Behavioral of twoscomp_decimal is
 begin
     process(i_binary)
-        --variable binary_value: integer;
+        variable binary_value: integer;
         variable decimal_value: integer;
     begin
         binary_value := to_integer(signed(i_binary));
